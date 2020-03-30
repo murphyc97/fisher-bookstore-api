@@ -7,6 +7,13 @@ namespace Fisher.Bookstore.Services
 
     public class TestBooksRepository : IBooksRepository
     {
+        private IBooksRepository booksRepository;
+
+        public BooksController(IBooksRepository repository)
+        {
+            booksRepository = repository;
+        }
+
         private Dictionary<int, Book> books;
 
         public TestBooksRepository()
@@ -44,7 +51,7 @@ namespace Fisher.Bookstore.Services
 
         public Book GetBook(int bookId)
         {
-            return books.GetValueOrDefault(bookId);
+            return Ok(booksRepository.GetBooks());
         }
 
         public IEnumerable<Book> GetBooks()
