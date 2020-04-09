@@ -22,9 +22,9 @@ namespace Fisher.Bookstore.Data
             .HasForeignKey(ba => ba.BookId);
 
             builder.Entity<BookAuthor>()
-           .HasOne(ba => ba.Author)
-           .WithMany(a => a.BookAuthor)
-           .HasForeignKey(ba => ba.AuthorId);
+            .HasOne(ba => ba.Author)
+            .WithMany(a => a.BookAuthor)
+            .HasForeignKey(ba => ba.AuthorId);
         }
 
     }
