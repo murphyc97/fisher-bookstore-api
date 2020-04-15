@@ -16,32 +16,39 @@ namespace Fisher.Bookstore.Services
 
         public int AddAuthor(Author author)
         {
-            throw new System.NotImplementedException();
+            db.Authors.Add(author);
+            db.SaveChanges();
+            return author.Id;
         }
 
         public bool AuthorExists(int authorId)
         {
-            throw new System.NotImplementedException();
+            return (db.Authors.Find(authorId) != null);
         }
 
         public void DeleteAuthor(int authorId)
         {
-            throw new System.NotImplementedException();
+            var author = db.Authors.Find(authorId);
+            db.Authors.Remove(author);
+            db.SaveChanges();
         }
 
         public Author GetAuthor(int authorId)
         {
-            throw new System.NotImplementedException();
+            return db.Authors.Find(authorId);
         }
 
         public IEnumerable<Author> GetAuthors()
         {
-            throw new System.NotImplementedException();
+            return db.Authors;
         }
 
         public void UpdateAuthor(Author author)
         {
-            throw new System.NotImplementedException();
+            var updateAuthor = db.Authors.Find(author.Id);
+            updateAuthor.Name = author.Name;
+            db.Authors.Update(updateAuthor);
+            db.SaveChanges();
         }
     }
 }
